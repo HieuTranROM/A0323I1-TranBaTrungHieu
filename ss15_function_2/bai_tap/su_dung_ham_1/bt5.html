@@ -5,7 +5,7 @@
     <title>BT5</title>
 </head>
 <body>
-<text>Nhập ngôi sao: </text>
+<text>Nhập ngôi sao:</text>
 <input type="text" id="ip_star">
 <br>
 <input type="button" value="Tìm chòm sao" onclick="find(document.getElementById('ip_star').value)"> <br>
@@ -16,15 +16,15 @@
     let arr2 = ['Ursa Minor', 'Tarurus', 'Cygnus', 'Lyra', 'Aquila', 'Ursa Major', 'Leo'];
 
     function find(star) {
-        if (isNaN(star)){
+        if (isNaN(star)) {
             let index = -1;
-            for (let i = 0; i < arr1.length; i++){
-                if (star == arr1[i]){
+            for (let i = 0; i < arr1.length; i++) {
+                if (star == arr1[i]) {
                     index = i;
                     break;
                 }
             }
-            if (index == -1){
+            if (index == -1) {
                 document.getElementById('t_result').innerHTML = `Không tìm thấy ngôi sao`;
             } else {
                 document.getElementById('t_result').innerHTML = `Ngôi sao ${star} thuộc chòm sao ${arr2[index]}`;

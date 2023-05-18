@@ -4,25 +4,26 @@
     <meta charset="UTF-8">
     <title>BT7</title>
     <style>
-        input{
+        input {
             margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-<text>Nhập số nguyên thứ 1: </text>
+<text>Nhập số nguyên thứ 1:</text>
 <input type="text" id="ip_number1">
 <br>
-<text>Nhập số nguyên thứ 2: </text>
+<text>Nhập số nguyên thứ 2:</text>
 <input type="text" id="ip_number2">
 <br>
-<input type="button" value="Hoán đổi" onclick="convert(document.getElementById('ip_number1').value, document.getElementById('ip_number2').value)">
+<input type="button" value="Hoán đổi"
+       onclick="convert(document.getElementById('ip_number1').value, document.getElementById('ip_number2').value)">
 <br>
 <text id="t_result"></text>
 </body>
 <script>
     function convert(number1, number2) {
-        if (isNaN(number1) || number1 == '' || isNaN(number2) || number2 == ''){
+        if (isNaN(number1) || number1 == '' || isNaN(number2) || number2 == '') {
             document.getElementById('t_result').innerHTML = `Error!!!`
         } else {
             document.getElementById('ip_number1').value = `${number2}`

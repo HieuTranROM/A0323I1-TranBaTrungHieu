@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            margin-left: 10px;
+        }
+
+        button {
+            margin-left: 30px;
+            width: 100px;
+            height: 30px;
+        }
+    </style>
+</head>
+<label for="ma">Mã Sổ:</label>
+<input type="text" id="ma" placeholder="*****"> </br></br>
+
+<label for="loai">Loại Tiết Kiệm:</label>
+<input type="text" id="loai" placeholder="Ngắn-hạn or Dài-hạn"> </br></br>
+
+<label for="ten">Họ và tên:</label>
+<input type="text" id="ten" placeholder="Nhập tên"> </br></br>
+
+<label for="cmnd">Chứng minh nhân dân:</label>
+<input type="text" id="cmnd" placeholder="*********"> </br></br>
+
+<label for="ngay">Ngày mở sổ:</label>
+<input type="text" id="ngay" placeholder="dd/mm/yyyy" onblur="validateDate()"> </br></br>
+<div id="error-message"></div>
+
+
+<label for="tien">Số tiền gửi:</label>
+<input type="text" id="tien" placeholder="Nhập tiền
+
+
+"> </br></br>
+<button onclick="addSTK()">Add</button></br></br>
+
+<p id="display"></p>
+
+<body>
+<script>
+    class SoTietKiem {
+        constructor(maSo, loaiTietKiem, tenKhachHang, cmnd, ngayMo, soTienGui) {
+            this.maSo = maSo;
+            this.loaiTietKiem = loaiTietKiem;
+            this.tenKhachHang = tenKhachHang;
+            this.cmnd = cmnd;
+            this.ngayMo = ngayMo;
+            this.soTienGui = soTienGui;
+        }
+        setMaSo(maSo) {
+            this.maSo = maSo;
+        }
+        setLoạiTietKiem(loaiTietKiem) {
+            this.loaiTietKiem = loaiTietKiem;
+        }
+        setTenKhachHang(tenKhachHang) {
+            this.tenKhachHang = tenKhachHang;
+        }
+        setCMND(cmnd) {
+            this.cmnd = cmnd;
+        }
+        setNgayMo(ngayMo) {
+            this.ngayMo = ngayMo;
+        }
+        setSoTienGui(soTienGui) {
+            this.soTienGui = soTienGui;
+        }
+
+        getMaSo(maSo) {
+            return this.maSo;
+        }
+        getLoaiTietKiem(loaiTietKiem) {
+            return this.loaiTietKiem;
+        }
+        getTenKhachHang(tenKhachHang) {
+            return this.tenKhachHang;
+        }
+        getCMND(cmnd) {
+            return this.cmnd;
+        }
+        getNgayMo(ngayMo) {
+            return this.ngayMo;
+        }
+        getSoTienGui(soTienGui) {
+            return this.soTienGui;
+        }
+    }
+    let stkList = [];
+    let stk1 = new SoTietKiem("MA001", "Ngắn hạn", "Nguyễn Văn Khải", "201234765", "12/02/2011", "12000000");
+    let stk2 = new SoTietKiem("MA002", "Dài hạn", "Nguyễn Văn Học", "201334765", "16/10/2021", "160000000");
+    let stk3 = new SoTietKiem("MA003", "Ngắn hạn", "Nguyễn Văn Tấn", "201554765", "24/12/2019", "1123000000");
+    stkList.push(stk1, stk2, stk3);
+    display(stkList);
+
+    function validateDate() {
+        var input = document.getElementById("ngay");
+        var errorMessage = document.getElementById("error-message");
+        var date = input.value;
+
+        // Kiểm tra định dạng ngày
+        if (!/^\d{2}\/\d{2}\/\d{4}$/.test(date)) {
+            errorMessage.innerHTML = "Định dạng ngày không đúng. Vui lòng nhập lại theo định dạng dd/mm/yyyy.";
+            input.focus();
+            return;
+        }
+
+        // Kiểm tra ngày hợp lệ
+        var parts = date.split("/");
+        var day = parseInt(parts[0], 10);
+        var month = parseInt(parts[1], 10);
+        var year = parseInt(parts[2], 10);
+
+        if (isNaN(day) || isNaN(month) || isNaN(year)) {
+            errorMessage.innerHTML = "Ngày không hợp lệ. Vui lòng nhập lại.";
+            input.focus();
+            return;
+        }
+
+        var isValidDate = (month >= 1 && month <= 12) && (day >= 1 && day <= new Date(year, month, 0).getDate());
+
+        if (!isValidDate) {
+            errorMessage.innerHTML = "Ngày không hợp lệ. Vui lòng nhập lại.";
+            input.focus();
+            return;
+        }
+
+        // Nếu không có lỗi, xóa thông báo lỗi
+        errorMessage.innerHTML = "";
+    }
+
+
+    //Hàm add
+    function addSTK() {
+        let ma = document.getElementById("ma").value;
+        let loai = document.getElementById("loai").value;
+        let ten = document.getElementById("ten").value;
+        let cmnd = document.getElementById("cmnd").value;
+        let ngay = document.getElementById("ngay").value;
+        let tien = document.getElementById("tien").value;
+        // while (ma.length > 5 || loai.length > 10 || ten.length > 30 || isNaN(cmnd) || !isNaN(ngay) || isNaN(tien)) {
+        //   alert("Invalid input! Please enter again.");
+        if (ma.length > 5) {
+            alert("Mã Sổ không hợp lệ! Hãy nhập lại");
+            document.getElementById("ma").value = "";
+            ma = document.getElementById("ma").value;
+        } else if (loai.length > 10) {
+            alert("Loại Tiết kiệm không hợp lệ! Hãy nhập lại");
+            document.getElementById("loai").value = "";
+            loai = document.getElementById("loai").value;
+        } else if (ten.length > 30) {
+            alert("Tên khách hàng quá dài! Hãy nhập lại");
+            document.getElementById("ten").value = "";
+            ten = document.getElementById("ten").value;
+        } else if (isNaN(cmnd)) {
+            alert("CMND không hợp lệ! Hãy nhập lại");
+            document.getElementById("cmnd").value = "";
+            cmnd = document.getElementById("cmnd").value;
+
+        } else if (isNaN(tien)) {
+            alert("Số tiền gửi không hợp lệ! Hãy nhập lại");
+            document.getElementById("tien").value = "";
+            tien = document.getElementById("tien").value;
+        } else {
+            let newSTK = new SoTietKiem(ma, loai, ten, cmnd, ngay, tien);
+            stkList.push(newSTK);
+        }
+        // let newSTK = new SoTietKiem(ma, loai, ten, cmnd, ngay, tien);
+        // stkList.push(newSTK);
+
+        document.getElementById("ma").value = "";
+        document.getElementById("loai").value = "";
+        document.getElementById("ten").value = "";
+        document.getElementById("cmnd").value = "";
+        document.getElementById("ngay").value = "";
+        document.getElementById("tien").value = "";
+
+        display(stkList);
+    }
+
+
+    // Hàm xóa
+    function deleteSTK(index) {
+        let conf = confirm("Bạn có muốn xóa khách hàng: " + stkList[index].getTenKhachHang());
+        if (conf) {
+            stkList.splice(index, 1);
+        }
+        display(stkList);
+    }
+
+    // Hàm hiển thị
+    function display(list) {
+        let tableString = '<table border="1" style="border-collapse: collapse">\n' +
+            '    <tr>\n' +
+            '        <th>Mã Sổ</th>\n' +
+            '        <th>Loại Tiết Kiệm</th>\n' +
+            '        <th>Tên khách hàng</th>\n' +
+            '        <th>Chứng minh</th>\n' +
+            '        <th>Ngày gửi</th>\n' +
+            '        <th>Số tiền</th>\n' +
+            '        <th>Edit</th>\n' +
+            '        <th>Delete</th>\n' +
+            '    </tr>';
+        for (let i = 0; i < list.length; i++) {
+            tableString += ' <tr>\n' +
+                '        <td>' + list[i].getMaSo() + '</td>\n' +
+                '        <td>' + list[i].getLoaiTietKiem() + '</td>\n' +
+                '        <td>' + list[i].getTenKhachHang() + '</td>\n' +
+                '        <td>' + list[i].getCMND() + '</td>\n' +
+                '        <td>' + list[i].getNgayMo() + '</td>\n' +
+                '        <td>' + list[i].getSoTienGui() + '</td>\n' +
+                '        <td><button>Edit</button></td>\n' +
+                '        <td><button onclick="deleteSTK(' + i + ')">Delete</button></td>\n' +
+                '    </tr>'
+        }
+        tableString += '</table>';
+        document.getElementById("display").innerHTML = tableString;
+    }
+</script>
+</body>
+
+</html>

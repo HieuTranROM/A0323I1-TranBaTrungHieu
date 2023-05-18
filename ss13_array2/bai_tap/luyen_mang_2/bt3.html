@@ -6,20 +6,16 @@
 </head>
 <body>
 <script>
-    //nhập 1 chuổi
-    let a = prompt('Nhập 1 chuỗi ký tự = ');
-    //tạo biến chat chưa các ký tự từ a->z và A->Z
-    let chat = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    //tạo biến dem để đếm số lượng ký tự có trong chuỗi
-    let dem = 0;
-    document.write('Mảng của bạn nhập vào có độ dài = ' + a.length + '<br/>');
-    for(let i = 0; i < a.length; i++){
-        //dùm hàm includes() để check xem a[] có nằm trong chuỗi chat hay ko
-        if(chat.includes(a[i])){
-            dem++;
+    let arr = ["a", "b", "c", "d", "e", 1, 2, 3, 11, 14, 15];
+    const size = arr.length;
+    let count = 0;
+    for (let i = 0; i < size; i++) {
+        if (!isNaN(parseInt(arr[i]))) {
+            count++;
         }
     }
-    document.write('Chuỗi của bạn có ' + dem + ' ký tự');
+    alert("Số ký tự số có trong mảng là: " + count);
+
 </script>
 </body>
 </html>

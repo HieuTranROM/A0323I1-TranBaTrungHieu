@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+<script>
+    //hàm tìm ước chung lớn nhất
+    function findGCD(a, b) {
+        a = Math.abs(a);
+        b = Math.abs(b);
+        while (b) {
+            let t = b;
+            b = a % b;
+            a = t;
+        }
+        return a;
+    }
+
+    //Hàm so sánh 2 phân số
+    function compareFraction(numerator1, denominator1, numerator2, denominator2) {
+        let gcd1 = findGCD(numerator1, denominator1);
+        numerator1 /= gcd1;
+        denominator1 /= gcd1;
+
+        let gcd2 = findGCD(numerator2, denominator2);
+        numerator2 /= gcd2;
+        denominator2 /= gcd2;
+
+        if (numerator1 === numerator2 && denominator1 === denominator2) {
+            return "Hai phân số bằng nhau!";
+        } else {
+            return "Hai phân số khác nhau!";
+        }
+    }
+
+    let numerator1 = parseInt(prompt("Nhập tử số phân số thứ nhất: "));
+    let denominator1 = parseInt(prompt("Nhập mẫu số phân số thứ nhất: "));
+    let numerator2 = parseInt(prompt("Nhập tử số phân số thứ hai: "));
+    let denominator2 = parseInt(prompt("Nhập mẫu số phân số thứ hai: "));
+
+    alert(compareFraction(numerator1, denominator1, numerator2, denominator2));
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+<script>
+    let n = parseInt(prompt("Enter the numbers of array: "));
+    while (n > 50) {
+        n = parseInt(prompt("Invalid input! Please enter again"));
+    }
+    let a = [];
+    console.log("Enter input element of array: ");
+    for (let i = 0; i < n; i++) {
+        let x = parseInt(prompt(`Nhập phần tử thứ ${i + 1}:`));
+        a.push(x);
+    }
+    function isPrime(arr) {
+        let b = [];
+        let prime = true;
+        for (let i = 0; i < arr.length; i++) {
+            let prime = true;
+            for (let j = 2; j <= Math.sqrt(arr[i]); j++) {
+                if (arr[i] % j === 0) {
+                    prime = false;
+                    break;
+                }
+            }
+            if (prime) {
+                b.push(a[i]);
+            }
+        }
+        console.log("Array b is " + b);
+    }
+    console.log("Array a is: ", a);
+    let arr = isPrime(a);
+
+</script>
+</body>
+
+</html>
