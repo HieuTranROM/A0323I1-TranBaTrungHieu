@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function tinhLuongRong(luong) {
+        let thue;
+
+        if (luong >= 15_000_000) {
+            thue = luong * 0.2;
+        } else if (luong >= 7_000_000) {
+            thue = luong * 0.1;
+        } else {
+            thue = luong * 0.05;
+        }
+
+        let luongRong = luong - thue;
+        return luongRong;
+    }
+
+    // Nhập lương từ người dùng
+    let luong = parseFloat(prompt("Nhập lương của nhân viên: "));
+
+    // Tính lương ròng
+    let luongRong = tinhLuongRong(luong);
+
+    // In kết quả
+    console.log("Lương ròng: " + luongRong);
+</script>
+
+</body>
+</html>

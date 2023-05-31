@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function veTamGiacVuongCanRong(h) {
+        let result = "";
+
+        for (let i = 1; i <= h; i++) {
+            for (let j = 1; j <= h - i; j++) {
+                result += " ";
+            }
+
+            if (i === 1 || i === h) {
+                for (let j = 1; j <= i; j++) {
+                    result += "*";
+                }
+            } else {
+                result += "*";
+
+                for (let j = 1; j <= i - 2; j++) {
+                    result += " ";
+                }
+
+                result += "*";
+            }
+
+            result += "\n";
+        }
+
+        return result;
+    }
+
+    // Đặt chiều cao của tam giác vuông cân
+    let h = 5;
+
+    // Vẽ tam giác vuông cân rỗng
+    let tamGiac = veTamGiacVuongCanRong(h);
+
+    // In kết quả
+    console.log(tamGiac);
+
+</script>
+</body>
+</html>

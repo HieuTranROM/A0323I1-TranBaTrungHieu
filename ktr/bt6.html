@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Định nghĩa lớp học viên
+    class HocVien {
+        constructor(maHocVien, ten, lop, email, ngaySinh, module) {
+            this.maHocVien = maHocVien;
+            this.ten = ten;
+            this.lop = lop;
+            this.email = email;
+            this.ngaySinh = ngaySinh;
+            this.module = module;
+        }
+    }
+
+    // Danh sách học viên
+    let danhSachHocVien = [];
+
+    // Hiển thị danh sách học viên
+    function hienThiDanhSachHocVien() {
+        console.log("Danh sách học viên:");
+        console.log("-------------------");
+        console.log("Mã\tTên\tLớp\tEmail\t\tNgày sinh\tModule");
+        danhSachHocVien.forEach((hocVien) => {
+            console.log(
+                `${hocVien.maHocVien}\t${hocVien.ten}\t${hocVien.lop}\t${hocVien.email}\t${hocVien.ngaySinh}\t${hocVien.module}`
+            );
+        });
+        console.log("-------------------");
+    }
+
+    // Thêm mới học viên
+    function themHocVien() {
+        const maHocVien = prompt("Nhập mã học viên: ");
+        const ten = prompt("Nhập tên học viên: ");
+        const lop = prompt("Nhập lớp: ");
+        const email = prompt("Nhập email: ");
+        const ngaySinh = prompt("Nhập ngày sinh (dd/mm/yyyy): ");
+        const module = parseInt(prompt("Nhập module: "));
+
+        const hocVien = new HocVien(maHocVien, ten, lop, email, ngaySinh, module);
+        danhSachHocVien.push(hocVien);
+
+        console.log("Học viên đã được thêm vào danh sách!");
+    }
+
+    // Sửa thông tin học viên
+    function suaThongTinHocVien() {
+        const maHocVien = prompt("Nhập mã học viên cần sửa thông tin: ");
+        let timThay = false;
+
+        danhSachHocVien.forEach((hocVien) => {
+            if (hocVien.maHocVien === maHocVien) {
+                const tenMoi = prompt("Nhập tên học viên mới: ");
+                const lopMoi = prompt("Nhập lớp mới: ");
+                const emailMoi = prompt("Nhập email mới: ");
+                const ngaySinhMoi = prompt("Nhập ngày sinh mới (dd/mm/yyyy): ");
+                const moduleMoi = parseInt(prompt("Nhập module mới: "));
+
+                hocVien.ten = tenMoi;
+                hocVien.lop = lopMoi;
+                hocVien.email = emailMoi;
+                hocVien.ngaySinh = ngaySinhMoi;
+                hocVien.module = moduleMoi;
+
+                console.log("Thông tin học viên đã được cập nhật!");
+                timThay = true;
+            }
+        });
+
+        if (!timThay) {
+            console.log("Mã học viên không tồn tại!");
+        }
+    }
+
+    // Xóa học viên
+    function xoaHocVien() {
+        const maHocVien = prompt("Nhập mã học viên cần xóa: ");
+        let timThay = false;
+
+        danhSachHocVien.forEach((hocVien, index) => {
+            if (hocVien.maHocVien === maHocVien) {
+                const luaChon = prompt("Học viên được tìm thấy. Bạn có muốn xóa không? (Y/N)");
+
+                if (luaChon.toLowerCase() === "y") {
+                    danhSachHocVien.splice(index, 1);
+                    console.log("Học viên đã được xóa khỏi danh sách!");
+                } else {
+                    console.log("Học viên không bị xóa.");
+                }
+
+                timThay = true;
+            }
+        });
+
+        if (!timThay) {
+            console.log("Mã học viên không tồn tại!");
+        }
+    }
+
+    // Chương trình chính
+    function main() {
+        let luaChon;
+
+        do {
+            console.log("Hệ thống quản lý học viên CODEGYM");
+            console.log("1. Hiển thị danh sách học viên");
+            console.log("2. Thêm mới học viên");
+            console.log("3. Sửa thông tin học viên");
+            console.log("4. Xóa học viên");
+            console.log("0. Thoát");
+            luaChon = prompt("Nhập lựa chọn của bạn: ");
+
+            switch (luaChon) {
+                case "1":
+                    hienThiDanhSachHocVien();
+                    break;
+                case "2":
+                    themHocVien();
+                    break;
+                case "3":
+                    suaThongTinHocVien();
+                    break;
+                case "4":
+                    xoaHocVien();
+                    break;
+                case "0":
+                    console.log("Cảm ơn bạn đã sử dụng chương trình!");
+                    break;
+                default:
+                    console.log("Lựa chọn không hợp lệ!");
+                    break;
+            }
+        } while (luaChon !== "0");
+    }
+
+    // Chạy chương trình
+    main();
+
+</script>
+</body>
+</html>
