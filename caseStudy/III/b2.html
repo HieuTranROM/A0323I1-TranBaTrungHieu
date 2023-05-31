@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function missingValue(A, B) {
+        const setA = new Set(A);
+        const result = [];
+
+        for (let i = 0; i < B.length; i++) {
+            if (!setA.has(B[i])) {
+                result.push(B[i]);
+                setA.add(B[i]);
+            }
+        }
+
+        return result;
+    }
+
+    // Test với ví dụ từ câu hỏi
+    const A = [7, 2, 5, 3, 5, 3];
+    const B = [7, 2, 5, 4, 6, 3, 5, 3];
+    alert(missingValue(A, B)); // Output: [4, 6]
+
+</script>
+</body>
+</html>

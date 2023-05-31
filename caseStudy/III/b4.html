@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function hienThiMenu() {
+        console.log("Menu thức uống:");
+        console.log("1. Cafe");
+        console.log("2. Cam vắt");
+        console.log("3. Nước ép cà rốt");
+        console.log("4. Nước ép cà chua");
+        console.log("5. Nước lọc");
+        console.log("6. Nước dừa");
+        console.log("7. Thoát gọi món");
+    }
+
+    function tinhTongTien(donGia, soLuong) {
+        return donGia * soLuong;
+    }
+
+    // Định nghĩa đơn giá cho từng loại thức uống
+    const donGiaCafe = 20000;
+    const donGiaCamVat = 25000;
+    const donGiaNuocEpCaRot = 30000;
+    const donGiaNuocEpCaChua = 35000;
+    const donGiaNuocLoc = 10000;
+    const donGiaNuocDua = 15000;
+
+    // Gọi và tính toán đơn hàng
+    function goiThucUong() {
+        let luaChon;
+        let soLuong;
+        let tongTien = 0;
+
+        do {
+            hienThiMenu();
+            luaChon = parseInt(prompt("Nhập lựa chọn của bạn: "));
+
+            switch (luaChon) {
+                case 1:
+                    soLuong = parseInt(prompt("Nhập số lượng Cafe: "));
+                    tongTien += tinhTongTien(donGiaCafe, soLuong);
+                    break;
+                case 2:
+                    soLuong = parseInt(prompt("Nhập số lượng Cam vắt: "));
+                    tongTien += tinhTongTien(donGiaCamVat, soLuong);
+                    break;
+                case 3:
+                    soLuong = parseInt(prompt("Nhập số lượng Nước ép cà rốt: "));
+                    tongTien += tinhTongTien(donGiaNuocEpCaRot, soLuong);
+                    break;
+                case 4:
+                    soLuong = parseInt(prompt("Nhập số lượng Nước ép cà chua: "));
+                    tongTien += tinhTongTien(donGiaNuocEpCaChua, soLuong);
+                    break;
+                case 5:
+                    soLuong = parseInt(prompt("Nhập số lượng Nước lọc: "));
+                    tongTien += tinhTongTien(donGiaNuocLoc, soLuong);
+                    break;
+                case 6:
+                    soLuong = parseInt(prompt("Nhập số lượng Nước dừa: "));
+                    tongTien += tinhTongTien(donGiaNuocDua, soLuong);
+                    break;
+                case 7:
+                    break;
+                default:
+                    console.log("Lựa chọn không hợp lệ. Vui lòng chọn lại!");
+            }
+        } while (luaChon !== 7);
+
+        console.log("Tổng số tiền cần thanh toán: " + tongTien + " đồng");
+    }
+
+    // Gọi thức uống
+    goiThucUong();
+
+</script>
+</body>
+</html>
