@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function normalizeString(inputString) {
+        // Chuyển đổi xâu thành chữ thường và tách các từ thành mảng
+        const words = inputString.toLowerCase().split(" ");
+
+        // Lặp qua từng từ và chuẩn hóa
+        const normalizedWords = words.map(word => {
+            // Xóa khoảng trắng thừa trong từ
+            word = word.trim();
+            // In hoa ký tự đầu tiên của từ
+            word = word.charAt(0).toUpperCase() + word.slice(1);
+            return word;
+        });
+
+        // Ghép lại các từ thành một xâu mới
+        const normalizedString = normalizedWords.join(" ");
+
+        return normalizedString;
+    }
+
+    function findLongestWord(inputString) {
+        // Tách các từ thành mảng
+        const words = inputString.split(" ");
+
+        // Tìm từ dài nhất trong mảng
+        let longestWord = "";
+        for (let i = 0; i < words.length; i++) {
+            if (words[i].length > longestWord.length) {
+                longestWord = words[i];
+            }
+        }
+
+        return longestWord;
+    }
+
+    // Hàm main sử dụng các hàm trên để nhập và xử lý xâu ký tự
+    function main() {
+        const inputString = prompt("Nhập xâu ký tự:");
+        const normalized = normalizeString(inputString);
+        const longestWord = findLongestWord(inputString);
+
+        console.log("Xâu trước khi chuẩn hóa:", inputString);
+        console.log("Xâu sau khi chuẩn hóa:", normalized);
+        console.log("Từ dài nhất trong xâu:", longestWord);
+    }
+
+    // Gọi hàm main để chạy chương trình
+    main();
+</script>
+</body>
+</html>
