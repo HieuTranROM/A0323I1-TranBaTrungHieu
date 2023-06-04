@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function commonCharacterCount(s1, s2) {
+        let count = 0;
+        let charCount1 = getCharCount(s1);
+        let charCount2 = getCharCount(s2);
+
+        // Duyệt qua tất cả các kí tự trong charCount1
+        for (let char in charCount1) {
+            // Nếu kí tự đó tồn tại trong charCount2
+            if (charCount2.hasOwnProperty(char)) {
+                // Tăng biến đếm
+                count += Math.min(charCount1[char], charCount2[char]);
+            }
+        }
+
+        return count;
+    }
+
+    // Hàm hỗ trợ để đếm số lượng các kí tự trong xâu
+    function getCharCount(s) {
+        let charCount = {};
+
+        for (let i = 0; i < s.length; i++) {
+            let char = s[i];
+            charCount[char] = (charCount[char] || 0) + 1;
+        }
+
+        return charCount;
+    }
+
+    // Sử dụng ví dụ trong câu hỏi
+    let s1 = 'aabcc';
+    let s2 = 'adcaa';
+    console.log(commonCharacterCount(s1, s2)); // Kết quả: 3
+</script>
+</body>
+</html>

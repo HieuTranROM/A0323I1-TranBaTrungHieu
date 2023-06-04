@@ -5,6 +5,18 @@
     <title>Title</title>
 </head>
 <body>
+<script>
+    function differentSymbolsNaive(s) {
+        let uniqueChars = new Set();
+        for (let i = 0; i < s.length; i++) {
+            uniqueChars.add(s[i]);
+        }
+        return uniqueChars.size;
+    }
 
+    // Sử dụng ví dụ trong câu hỏi
+    let s = "fawqweqw";
+    console.log(differentSymbolsNaive(s)); // Kết quả: 5
+</script>
 </body>
 </html>

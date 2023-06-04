@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function findMinMaxIn2DArray(arr) {
+        let min = Infinity; // Giả sử giá trị nhỏ nhất là vô cùng lớn
+        let max = -Infinity; // Giả sử giá trị lớn nhất là vô cùng nhỏ
+
+        // Duyệt qua từng phần tử trong mảng 2 chiều
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr[i].length; j++) {
+                // So sánh với giá trị nhỏ nhất hiện tại
+                if (arr[i][j] < min) {
+                    min = arr[i][j];
+                }
+
+                // So sánh với giá trị lớn nhất hiện tại
+                if (arr[i][j] > max) {
+                    max = arr[i][j];
+                }
+            }
+        }
+
+        return {
+            min: min,
+            max: max
+        };
+    }
+
+    // Khởi tạo mảng 2 chiều
+    let array2D = [
+        [3, 1, 9],
+        [5, 2, 7],
+        [4, 8, 6],
+    ];
+
+    let result = findMinMaxIn2DArray(array2D);
+    console.log("Giá trị nhỏ nhất:", result.min);
+    console.log("Giá trị lớn nhất:", result.max);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function isPrime(num) {
+        if (num <= 1) {
+            return false;
+        }
+
+        // Kiểm tra xem num có chia hết cho bất kỳ số nào từ 2 đến căn bậc hai của num hay không
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    function countPrimesIn2DArray(arr) {
+        let count = 0;
+
+        // Duyệt qua từng phần tử trong mảng 2 chiều
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr[i].length; j++) {
+                // Kiểm tra xem phần tử có phải là số nguyên tố hay không
+                if (isPrime(arr[i][j])) {
+                    count++;
+                    console.log(arr[i][j]); // Liệt kê số nguyên tố (tuỳ chọn)
+                }
+            }
+        }
+
+        return count;
+    }
+
+    // Khởi tạo mảng 2 chiều
+    let array2D = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9],
+    ];
+
+    console.log(countPrimesIn2DArray(array2D)); // In kết quả đếm số nguyên tố trong mảng 2 chiều
+
+</script>
+</body>
+</html>
